@@ -19,20 +19,6 @@ class ServiceUrlHandler
     /**
      * @throws \InvalidArgumentException
      */
-    public function parseRequestFromPostRaw(): ServiceResponse
-    {
-        $data = json_decode(file_get_contents('php://input'));
-
-        if ($data === null) {
-            throw new \InvalidArgumentException(json_last_error_msg());
-        }
-
-        return $this->parseRequestFromObject($data);
-    }
-
-    /**
-     * @throws \InvalidArgumentException
-     */
     public function parseRequestFromObject(object $data): ServiceResponse
     {
         $response = new ServiceResponse($data);

@@ -10,8 +10,8 @@ $credentials = new AccountCredential("login", "secret");
 try {
     
     $handler = new ServiceUrlHandler($credentials);
-
-    $response = $handler->parseRequestFromPostRaw();
+    $data = $_POST;
+    $response = $handler->parseRequestFromObject((object)$data);
 
     http_response_code(200);
 } catch (\InvalidArgumentException $e) {

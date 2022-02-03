@@ -16,12 +16,15 @@ class SignatureHelper
     ];
 
     private const RESPONSE_FIELDS = [
-        'wsb_seed',
-        'wsb_storeid',
-        'wsb_order_num',
-        'wsb_test',
-        'wsb_currency_id',
-        'wsb_total',
+        'batch_timestamp',
+        'currency_id',
+        'amount',
+        'payment_method',
+        'order_id',
+        'site_order_id',
+        'transaction_id',
+        'payment_type',
+        'rrn',
         'secret_key',
     ];
 
