@@ -14,7 +14,6 @@ class GuzzleRequestTransformer implements RequestTransformerInterface
     {
         $endpoint = $request->getEndpoint();
         $data = $request->getTransactionData();
-        print_r($data);
         $response = (new Client())->post(
             $endpoint->getUrl(),
             [
