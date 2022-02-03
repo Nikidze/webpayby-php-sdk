@@ -15,11 +15,7 @@ class ServiceUrlHandler
     {
         $this->credential = $credential;
     }
-
-    /**
-     * @throws \InvalidArgumentException
-     */
-    public function parseRequestFromObject(object $data): ServiceResponse
+    public function checkSignature(object $data): bool
     {
         $response = new ServiceResponse($data);
         $signature = SignatureHelper::mathSignature(
@@ -38,10 +34,6 @@ class ServiceUrlHandler
             SignatureHelper::RESPONSE,
         );
 
-        if ($signature != $response->getSignature()) {
-            throw new \InvalidArgumentException("Signatures mismatch");
-        }
-
-        return $response;
+        return $signature == $response->getSignature();
     }
 }
