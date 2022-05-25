@@ -14,7 +14,7 @@ class AccountCredential
     {
         $this->account = $account;
         $this->secret = $secret;
-        $this->refer = $referer;
+        $this->referer = $referer;
     }
     public function getAccount(): string
     {
