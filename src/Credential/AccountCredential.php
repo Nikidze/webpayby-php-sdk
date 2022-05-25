@@ -8,10 +8,13 @@ class AccountCredential
 
     private string $secret;
 
-    public function __construct(string $account, string $secret)
+    private string $referer;
+
+    public function __construct(string $account, string $secret, string $referer)
     {
         $this->account = $account;
         $this->secret = $secret;
+        $this->refer = $referer;
     }
     public function getAccount(): string
     {
@@ -21,5 +24,10 @@ class AccountCredential
     public function getSecret(): string
     {
         return $this->secret;
+    }
+
+    public function getReferer(): string
+    {
+        return $this->referer;
     }
 }

@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use Nikidze\Webpay\Contract\RequestTransformerInterface;
 use Nikidze\Webpay\Request\ApiRequest;
 use Nikidze\Webpay\Contract\ResponseInterface;
-use Nikidze\Webpay\Response\Response;
 
 class GuzzleRequestTransformer implements RequestTransformerInterface
 {
@@ -17,7 +16,11 @@ class GuzzleRequestTransformer implements RequestTransformerInterface
         $response = (new Client())->post(
             $endpoint->getUrl(),
             [
-                'json' => array_filter($data)
+                'json' => array_filter($data),
+                'headers' => [
+                    'Origin' => $request->getReferer(),
+                    'Referer' => $request->getReferer()
+                ]
             ]
         );
         return $request->getResponse(json_decode($response->getBody()->getContents())->data);

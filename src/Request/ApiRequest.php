@@ -65,6 +65,11 @@ abstract class ApiRequest
         return $this->endpoint;
     }
 
+    public function getReferer()
+    {
+        return $this->credential->getReferer();
+    }
+
 
     public function setEndpoint(EndpointInterface $endpoint): self
     {
